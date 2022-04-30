@@ -7,8 +7,16 @@ namespace Q8
     class Program
     {
         static void Main(string[] args)
-        { 
-            GetCatalogs();
+        {
+            string filePath = @"C://Users/Администратор/Desktop/Text.txt"; // Укажем путь
+
+            // Откроем файл и прочитаем его содержимое
+            using (StreamReader sr = File.OpenText(filePath))
+            {
+                string str = "";
+                while ((str = sr.ReadLine()) != null)
+                    Console.WriteLine(str);
+            }
 
         }
         static void GetCatalogs()
@@ -45,6 +53,20 @@ namespace Q8
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        static void DeleteTrashCan()
+        {
+            try
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(@"C://Users/Администратор/Desktop/testFolder");
+                string trashPath = "C://Users/Администратор/Desktop/Text/testFolder";
+                dirInfo.MoveTo(trashPath);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
     }
