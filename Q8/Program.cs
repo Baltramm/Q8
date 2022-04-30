@@ -36,6 +36,16 @@ namespace Q8
                 Console.WriteLine(e.Message);
 
             }
+            try
+            {
+                DirectoryInfo dirInfo = new DirectoryInfo(@"/newDirectory");
+                dirInfo.Delete(true); // Удаление со всем содержимым
+                Console.WriteLine("Каталог удален");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }
